@@ -10,7 +10,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/src/configs/server.js",
-    "dev": "nodemon src/configs/server.ts",
+    "dev": "nodemon src/config/server.ts",
     "test:tests": "dotenv -e .env.test prisma migrate dev && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i",
     "test:unit": "dotenv -e .env.test cross-env NODE_OPTIONS=--experimental-vm-modules jest -- -i --coverage --testPathPattern=tests/unit"
   },
@@ -27,7 +27,6 @@
   "dependencies": {
     "@prisma/client": "^4.9.0",
     "bcrypt": "^5.1.0",
-    "chalk": "^5.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
