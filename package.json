@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node dist/src/configs/server.js",
+    "start": "node dist/src/config/server.js",
     "dev": "nodemon src/config/server.ts",
     "test:tests": "dotenv -e .env.test prisma migrate dev && NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest -i",
     "test:unit": "dotenv -e .env.test cross-env NODE_OPTIONS=--experimental-vm-modules jest -- -i --coverage --testPathPattern=tests/unit"
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.16",
