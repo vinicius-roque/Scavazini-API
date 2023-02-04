@@ -1,7 +1,7 @@
 import { prisma } from "../config/database.js";
 import { CreateUser } from "../interfaces/createData.js";
 
-export async function checkUser(param: string, value: string) {
+export async function checkUser(param: string, value: string | number) {
   return prisma.user.findFirst({
     where: {
       [param]: value,
