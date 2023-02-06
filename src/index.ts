@@ -4,7 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import publicRoutes from "./routes/publicRoutes.js";
-import privateRoutes from "./routes/privateRouter.js";
+import privateRoutes from "./routes/privateRoutes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const server = express();
