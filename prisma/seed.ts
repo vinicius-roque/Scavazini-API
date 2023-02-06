@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { CreateUser } from "../src/interfaces/createData";
+import { CreateUser, CreateModule, CreateTopic } from "../src/interfaces/createData";
 import * as passUtils from "../src/utils/passUtils.js";
 
 const prisma = new PrismaClient();
@@ -11,9 +11,15 @@ export async function main() {
     password: passUtils.encryptPassword("admin123"),
   };
 
-  await prisma.$queryRaw`TRUNCATE TABLE users RESTART IDENTITY CASCADE;`;
+  const createModule: CreateModule[] = [];
+
+  const createTopics: CreateTopic[] = [];
+
+  await prisma.$queryRaw`TRUNCATE TABLE users, modules, topics RESTART IDENTITY CASCADE;`;
 
   await prisma.user.create({ data: createUser });
+  await prisma.module.createMany({ data: createModule });
+  await prisma.topic.createMany({ data: createTopics });
 }
 
 main()

@@ -3,7 +3,8 @@ import "express-async-errors";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import publicRouter from "./routes/publicRouter.js";
+import publicRoutes from "./routes/publicRoutes.js";
+import privateRoutes from "./routes/privateRouter.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const server = express();
@@ -12,7 +13,9 @@ dotenv.config();
 server.use(json());
 server.use(cors());
 
-server.use(publicRouter);
-server.use(errorHandler);
+server
+  .use(publicRoutes)
+  .use(privateRoutes)
+  .use(errorHandler);
 
 export default server;
